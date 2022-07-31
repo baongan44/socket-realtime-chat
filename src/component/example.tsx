@@ -24,7 +24,7 @@ const Example = () => {
   return (
     <>
       <div className="App">
-        {/* <div>
+        <div>
           <input
             type="text"
             placeholder="Your name..."
@@ -37,7 +37,7 @@ const Example = () => {
             }}
           />
           <button onClick={joinRoom}>Join Room</button>
-        </div> */}
+        </div>
         <br />
         {/* <input
           placeholder="Message..."
@@ -52,7 +52,7 @@ const Example = () => {
           {messageReceived}
         </h1>
         <h1> User: {`${userRender} invited`}</h1> */}
-        {/* <ChatRoom socket={socket} username={user} room={room} /> */}
+        <ChatRoom socket={socket} username={user} room={room} />
         {/* <ChatRoom2 socket={socket} /> */}
         <Example02 />
       </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useSocket from "../hook/useSocket";
 
 interface Props {
   socket: any;
@@ -11,6 +12,7 @@ const ChatRoom = ({ socket, username, room }: Props) => {
   const [messageList, setMessageList] = useState([] as any);
   const [name, setName] = useState([] as any);
   const [nameDis, setNameDis] = useState([] as any);
+  const { getData, sendData, getDataBack } = useSocket();
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -36,13 +38,15 @@ const ChatRoom = ({ socket, username, room }: Props) => {
       setMessageList((list: any) => [...list, data]);
       console.log(data, "data");
     });
+    const reice = getDataBack("receive_message")
+  console.log({getData, reice})
     socket.on("user-connected", (data: any) => {
       setName((list: any) => [...list, data.user]);
     });
     socket.on("user-disconnected", (name: any) => {
       console.log(name, 'heheh')
     });
-  }, [socket, username]);
+  }, [getDataBack, socket, username]);
   return (
     <div>
       <div className="chat-header">
